@@ -102,13 +102,16 @@ class BinaryTree {
         }
     }
 
+    //Checks if there is a node with the given value exists in the tree. 
     find (value) {
         if (this.root === null) {
-            return;
+            return false;
         }
+
         else if (this.root.value === value) {
             return true;
         }
+
         else {
             let tempQueue = this.levelOrderTraversal();
             while(!tempQueue.isEmpty()){

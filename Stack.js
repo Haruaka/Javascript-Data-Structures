@@ -1,3 +1,5 @@
+"use-strict"
+
 class Stack {
     constructor() {
         this.stack = [];
@@ -33,7 +35,10 @@ class Stack {
 module.exports = Stack;
 
 
-/*Imagine a (literal) stack of plates. If the stack gets too high, it might topple. Therefore, in real life, we would likely start a new stack when the previous stack exceeds some threshold. Implement a data structure SetOfStacks that mimics this. SetO-fStacks should be composed of several stacks and should create a new stack once the previous one exceeds capacity. SetOfStacks. push() and SetOfStacks. pop() should behave identically to a single stack (that is, pop () should return the same values as it would if there were just a single stack). FOLLOW UP Implement a function popAt ( int index) which performs a pop operation on a specific sub-stack. */
+
+//Solutions to the Stacks & Queues section of Cracking the Coding Interview
+
+//A stack connected to multiple inner stacks. When one stack gets too full, a new stack is created.
 class setOfStacks {
     constructor(lim) {
         this.stackSet = [];
@@ -120,6 +125,7 @@ for(let i = 0; i < 3; i++) {
 testStack.printSetOfStacks();*/
 
 
+//Queue built using a stack
 class myQueue {
     constructor(){
         this.oldStack = new Stack();
@@ -150,6 +156,7 @@ for(let i = 0; i < 10; i++) {
 }*/
 
 
+//Sorting a stack by using three stacks.
 function stackSort(original) {
     let max = 0,
         length = original.getSize(),

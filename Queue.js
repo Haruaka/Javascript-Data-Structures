@@ -34,7 +34,7 @@ class Queue {
 module.exports = Queue;
 
 
-
+//Queue mimicing an adoption system of a Cats & Dog shelter. Taken from Cracking the Coding Interview
 class Pet {
     constructor (type) {
         this.type = type;
@@ -105,7 +105,6 @@ class PetQueue{
         console.log(this.queue.join(", "))
     }
 }
-
 /*let test = new PetQueue();
 test.enqueue("cat");
 test.enqueue("cat");

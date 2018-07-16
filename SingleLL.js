@@ -1,5 +1,6 @@
 "use strict"
 
+//A node class that contains some sort of data and an object next to it.
 class Node {
     constructor(value) {
         this.next = null;
@@ -7,6 +8,8 @@ class Node {
     }
 }
 
+/*A single linked list class that keeps track of the list's head, tail and length. 
+It also contains all the default methods of a Linked List in O(N) complexity max.*/
 class SingleLinkedList {
     constructor(){
         this.head = null;
@@ -14,6 +17,7 @@ class SingleLinkedList {
         this.length = 0;
     }
 
+    //Adds a node into the list and adjusts the list accordingly in O(1) complexity
     add(value) {
         const newNode = new Node(value);
         if(this.length === 0) {
@@ -29,6 +33,8 @@ class SingleLinkedList {
         }
     }
 
+    /* Removes the head of the list and adjusts the list accordingly in O(1) complexity. 
+       Doesn't remove anything if the head does not exist. */
     removeHead() {
         if (this.length === 0) {
             return;
@@ -46,6 +52,8 @@ class SingleLinkedList {
         }
     }
 
+    /* Removes the tail of the list and adjusts the list accordingly in O(1) complexity. 
+       Doesn't remove anything if the head doesn't exist. */
     removeTail() {
         if(this.length === 0) {
             return;
@@ -72,6 +80,8 @@ class SingleLinkedList {
         }
     }
 
+    /* Checks if a node containing the given value exists in the list in O(N) complexity. 
+       If the node does not exist, return -1. */
     find(value) {
         let tempNode = this.head,
             count = 0;
@@ -87,6 +97,7 @@ class SingleLinkedList {
         return -1;
     }
 
+    //Gets the node of a given position in the list in O(N)
     getNodeAt(pos) {
         let tempNode = this.head,
             count = 0;
@@ -104,6 +115,7 @@ class SingleLinkedList {
         }
     }
 
+    //Prints the data of the nodes in the list in O(N)
     printList() {
         let node = this.head;
         while (node) {
@@ -113,4 +125,4 @@ class SingleLinkedList {
     }
 }
 
-//module.exports = SingleLinkedList;
+module.exports = SingleLinkedList;

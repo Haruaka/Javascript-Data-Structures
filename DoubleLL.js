@@ -8,6 +8,8 @@ class Node {
     }
 }
 
+/* A linked list that holds a pointer to the next and previous node. 
+   Shares the same methods as the Single Linked List. */
 class DoubleLinkedList {
     constructor() {
         this.head = null,
@@ -108,7 +110,7 @@ class DoubleLinkedList {
     }
 }
 
-//Double LinkedList Testing Methods
+//Double LinkedList Testing Methods:
 /*let testList = new DoubleLinkedList();
 testList.add(1);
 testList.add(2);
