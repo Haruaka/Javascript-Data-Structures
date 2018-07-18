@@ -1,3 +1,4 @@
+const Queue = require('./Queue');
 "use-strict"
 
 class Node {
@@ -14,44 +15,83 @@ class BST {
     }
 
     add (value) {
-        if(this.root !== null) {
-            this.root = new Node(value);
-        }
-
-        else {
-            let tempNode = this.root;
-
-            while (tempNode.left || tempNode.right) {
-                if (value < tempNode.value) {
-                   if(tempNode.left === null) {
-                        tempNode.left = new Node(value);
-                        return;
-                   } 
-
-                   else {
-                        tempNode = tempNode.left;
-                   }
-                }
-
-                else {
-                    if (tempNode.right === null) {
-                        tempNode.right = new Node(value);
-                        return;
+        let tempNode = new Node (value),
+            addNode = (tempNode, newNode) => {
+                if(tempNode.value > newNode.value) {
+                    if(!tempNode.left) {
+                        tempNode.left = newNode;
                     }
 
                     else {
-                        tempNode = tempNode.right;
+                        addNode(tempNode.left, newNode);
                     }
+                }
+
+                else {
+                    if(!tempNode.right) {
+                        tempNode.right = newNode;
+                    }
+                    else {
+                        addNode(tempNode.right, newNode);
+                    }
+                }
+            };
+
+        if (this.root === null) {
+            this.root = tempNode;
+        }
+
+        else {
+            addNode(this.root, tempNode);
+        }
+    }
+
+    levelOrderTraversal() {
+        if (this.root === null) {
+            return;
+        } 
+
+        else {
+            let countQueue = new Queue(),
+                tempQueue = new Queue(),
+                tempNode = this.root;
+
+            tempQueue.add(tempNode);
+            countQueue.add(tempNode);
+
+            while (tempQueue.getSize() > 0) {
+                tempNode = tempQueue.remove();
+
+                if(tempNode.value !== this.root.value) {
+                    countQueue.add(tempNode);
+                }
+
+                if (tempNode.left !== null) {
+                    tempQueue.add(tempNode.left);               
+                }
+
+                if (tempNode.right !== null) {
+                    tempQueue.add(tempNode.right);
                 }
             }
 
-            if(value < tempNode.value) {
-                tempNode.left = new Node(value);
-            }
+            return countQueue;
+        }
+    }
 
-            else {
-                tempNode.right = new Node(value);
-            }
+    printTree() {
+        let tempQueue = this.levelOrderTraversal();
+        while (tempQueue.getSize() > 0) {
+            console.log(tempQueue.remove().value);
         }
     }
 }
+
+let newBST = new BST();
+newBST.add(8);
+newBST.add(4);
+newBST.add(9);
+newBST.add(2);
+newBST.add(6);
+
+console.log(newBST.printTree());
